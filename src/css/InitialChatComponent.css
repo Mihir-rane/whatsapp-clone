@@ -1,0 +1,42 @@
+.initialChatComponent{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    flex: 0.70;
+    background-color: #F8F9FA;
+}
+
+.initialChatComponent > img{
+    width: 250px;
+}
+
+.initialChatComponent > h1{
+    font-weight: 50;
+    color: #565656;
+}
+
+.initialChatComponent > hr{
+    background-color: #EEEFF0;
+    height: 1px;
+    width: 40%;
+}
+
+.initialChatComponent > div {
+    display: flex;
+}
+
+.initialChatComponent > div > .MuiSvgIcon-root{
+    color: #919191;
+    margin-right: 8px;
+    font-size: 20px;
+}
+
+.initialChatComponent> div > div {
+    color: #919191;
+    font-size: 15px;
+}
+
+.download-link{
+    color: #06D755;
+}
