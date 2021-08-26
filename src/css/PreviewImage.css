@@ -1,0 +1,16 @@
+.smallPreviewImage{
+    background-size: cover;
+    height: 78px;
+    width: 78px;
+    margin-right: 5px;
+    position: relative;
+}
+
+.smallPreviewImage:hover{
+   cursor: pointer;
+}
+
+.remove__image__background{
+    background-image: linear-gradient(#000,transparent);
+    height: 20px;
+}
