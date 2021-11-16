@@ -59,7 +59,7 @@ function SidebarChat({id,name,addNewChat}) {
                         <p>
                             { 
                                 messages[0]?.message ? 
-                                    (messages[0]?.message.length > 43 ? messages[0]?.message.slice(0,43) + "..." : messages[0]?.message) : 
+                                    (messages[0]?.message.length > 30 ? messages[0]?.message.slice(0,30) + "..." : messages[0]?.message) : 
                                     <em>Image is send</em>
                             }
                         </p>

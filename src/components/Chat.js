@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect, useRef} from 'react';
 import { useParams } from"react-router-dom";
 import db from '../firebase';
 import firebase from "firebase";
@@ -27,6 +27,8 @@ function Chat() {
     const [messages, setMessages] = useState([]);
     const [emojiToggler , setEmojiToggler] = useState(false);
     const [{user, currentRoomAvatar}] = useStateValue(); 
+
+    const chatsBottomRef = useRef(null);
     
     useEffect(() => {
         db.collection("rooms").doc(roomId).onSnapshot((snapshot) =>
@@ -47,8 +49,14 @@ function Chat() {
         setFileReceived(false)
         setImages([])
         setEmojiToggler(false);
+
+        chatsBottomRef.current.scrollIntoView({ behavior: 'smooth' });
        
     },[roomId])
+
+    useEffect(() => {
+        chatsBottomRef.current.scrollIntoView({ behavior: 'smooth' });
+    },[messages])
     
     const sendMessage = e => {
         e.preventDefault();
@@ -114,7 +122,7 @@ function Chat() {
             { 
                 !fileReceived ? 
                 <>
-                    <div id="chat-body" className={`chat__body ${ emojiToggler && 'chat_bodyReducedHeight'}`}>
+                    <div id="chat-body" className={`chat__body ${ emojiToggler && 'chat__bodyReducedHeight'}`}>
                         {
                             messages.map(message => (
                                     <p className={`chat__message ${message.name === user.displayName && 'chat__receiver'}`}>
@@ -125,10 +133,13 @@ function Chat() {
                                                 : null 
                                         }
                                         <span className="chat__text">{message.message}</span>
+                                        <br />
                                         <span className="chat__timestamp">{new Date(message.timestamp?.toDate()).toUTCString()}</span>
                                     </p>   
                             ))
                         }
+
+                        <div ref={chatsBottomRef} />
                     
                     </div>
 
